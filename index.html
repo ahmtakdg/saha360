@@ -346,40 +346,51 @@
 
     /* PRICING */
     .pricing { padding: 5rem 2rem; background: var(--mid); }
-    .pricing-inner { max-width: 900px; margin: 0 auto; }
+    .pricing-inner { max-width: 1000px; margin: 0 auto; }
+
     .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem; margin-top: 3rem;
     }
     .price-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 2rem;
+      border-radius: 22px; padding: 2.2rem 2rem;
+      display: flex; flex-direction: column;
+      transition: border-color .2s, transform .2s;
     }
+    .price-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,.35); }
     .price-card.featured { border-color: var(--blue); position: relative; }
     .price-card.featured::before {
-      content: "En Popüler";
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      content: "En Çok Tercih Edilen";
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
       background: var(--blue); color: #fff;
-      padding: .2rem .9rem; border-radius: 20px; font-size: .75rem; font-weight: 700;
+      padding: .25rem 1rem; border-radius: 20px; font-size: .75rem; font-weight: 700;
+      white-space: nowrap;
     }
-    .price-card h3 { font-size: 1rem; color: var(--muted); margin-bottom: .75rem; }
-    .price-amount { font-size: 2.6rem; font-weight: 800; line-height: 1; }
-    .price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: .4rem; }
-    .price-amount span { font-size: 1rem; color: var(--muted); font-weight: 400; }
-    .price-desc { color: var(--muted); font-size: .85rem; margin: .75rem 0 1.5rem; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.8rem; }
-    .price-features li { display: flex; gap: .6rem; font-size: .9rem; align-items: flex-start; }
-    .price-features li::before { content: "✓"; color: #22c55e; flex-shrink: 0; font-weight: 700; }
+    .price-tier-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .6rem;
+    }
+    .price-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+    .price-card .price-range { font-size: .85rem; color: var(--muted); margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: .7rem; flex: 1; margin-bottom: 2rem; }
+    .price-features li { display: flex; gap: .65rem; font-size: .9rem; align-items: flex-start; line-height: 1.4; }
+    .price-features li .chk { color: #22c55e; flex-shrink: 0; font-weight: 700; }
+
     .price-btn {
-      display: block; text-align: center;
-      padding: .75rem; border-radius: 10px;
+      display: block; text-align: center; margin-top: auto;
+      padding: .9rem; border-radius: 12px;
       font-weight: 700; font-size: .95rem; text-decoration: none;
-      transition: opacity .2s;
+      transition: opacity .2s, transform .15s;
     }
-    .price-btn:hover { opacity: .85; }
+    .price-btn:hover { opacity: .85; transform: translateY(-1px); }
     .price-btn-filled { background: var(--blue); color: #fff; }
     .price-btn-outline { border: 1px solid var(--border); color: var(--text); }
-    .pricing-note { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 1.5rem; }
+    .price-btn-outline:hover { border-color: var(--accent); }
+
+    .pricing-note { color: var(--muted); font-size: .82rem; text-align: center; margin-top: 2rem; line-height: 1.7; }
 
     /* CTA */
     .cta-section {
@@ -412,7 +423,7 @@
   <ul class="nav-links">
     <li><a href="#ozellikler">Özellikler</a></li>
     <li><a href="#ekranlar">Ekranlar</a></li>
-    <li><a href="#fiyat">Fiyatlandırma</a></li>
+    <li><a href="#fiyat">Teklif Al</a></li>
     <li><a href="#iletisim">İletişim</a></li>
   </ul>
   <a class="nav-cta" href="mailto:info@saha360.com">Demo Talep Et</a>
@@ -551,38 +562,63 @@
   <div class="pricing-inner">
     <div style="text-align:center">
       <div class="section-label">Fiyatlandırma</div>
-      <h2 class="section-title">Şeffaf Fiyatlandırma</h2>
-      <p class="section-sub">Kullanıcı başına aylık ödeme. Gizli ücret yok.</p>
+      <h2 class="section-title">Şirketinize Özel Teklif</h2>
+      <p class="section-sub">Fiyatlandırma; ekip büyüklüğüne, kurulum kapsamına ve destek ihtiyacına göre şekillenir. Rakam vermek yerine sizi dinleyip doğru teklifi hazırlayalım.</p>
     </div>
+
     <div class="pricing-grid">
+
       <div class="price-card">
+        <div class="price-tier-label">Küçük Ekip</div>
         <h3>Başlangıç</h3>
-        <div class="price-amount"><sup>$</sup>25<span>/kullanıcı/ay</span></div>
-        <p class="price-desc">10–50 kullanıcıya kadar</p>
+        <div class="price-range">10 – 50 kullanıcı</div>
         <ul class="price-features">
-          <li>Görev ve ziyaret takibi</li>
-          <li>Anlık bildirimler</li>
-          <li>Temel raporlama</li>
-          <li>iOS uygulaması</li>
-          <li>E-posta destek</li>
+          <li><span class="chk">✓</span><span>Görev ve ziyaret takibi</span></li>
+          <li><span class="chk">✓</span><span>Anlık push bildirimleri</span></li>
+          <li><span class="chk">✓</span><span>Rol bazlı erişim yönetimi</span></li>
+          <li><span class="chk">✓</span><span>Temel raporlama</span></li>
+          <li><span class="chk">✓</span><span>iOS uygulaması</span></li>
+          <li><span class="chk">✓</span><span>Kurulum + eğitim desteği</span></li>
         </ul>
-        <a href="mailto:info@saha360.com" class="price-btn price-btn-outline">İletişime Geç</a>
+        <a href="mailto:info@saha360.com" class="price-btn price-btn-outline">Teklif İste</a>
       </div>
+
       <div class="price-card featured">
-        <h3>Kurumsal</h3>
-        <div class="price-amount"><sup>$</sup>35<span>/kullanıcı/ay</span></div>
-        <p class="price-desc">50–500 kullanıcı</p>
+        <div class="price-tier-label">Orta Ölçekli</div>
+        <h3>Büyüme</h3>
+        <div class="price-range">50 – 200 kullanıcı</div>
         <ul class="price-features">
-          <li>Tüm Başlangıç özellikleri</li>
-          <li>Ekip ve rol yönetimi</li>
-          <li>Gelişmiş raporlama</li>
-          <li>Kurulum + onboarding desteği</li>
-          <li>Öncelikli destek hattı</li>
+          <li><span class="chk">✓</span><span>Tüm Başlangıç özellikleri</span></li>
+          <li><span class="chk">✓</span><span>Ekip ve takım yönetimi</span></li>
+          <li><span class="chk">✓</span><span>Gelişmiş raporlama + export</span></li>
+          <li><span class="chk">✓</span><span>Öncelikli destek hattı</span></li>
+          <li><span class="chk">✓</span><span>Onboarding eğitim seansı</span></li>
+          <li><span class="chk">✓</span><span>Platform bakım + SLA</span></li>
         </ul>
-        <a href="mailto:info@saha360.com" class="price-btn price-btn-filled">Demo İste</a>
+        <a href="mailto:info@saha360.com" class="price-btn price-btn-filled">Demo & Teklif İste</a>
       </div>
+
+      <div class="price-card">
+        <div class="price-tier-label">Kurumsal</div>
+        <h3>Enterprise</h3>
+        <div class="price-range">200+ kullanıcı</div>
+        <ul class="price-features">
+          <li><span class="chk">✓</span><span>Tüm Büyüme özellikleri</span></li>
+          <li><span class="chk">✓</span><span>Özel SLA sözleşmesi</span></li>
+          <li><span class="chk">✓</span><span>Dedicated destek kanalı</span></li>
+          <li><span class="chk">✓</span><span>Dataverse depolama planlaması</span></li>
+          <li><span class="chk">✓</span><span>Çoklu şirket / lokasyon</span></li>
+          <li><span class="chk">✓</span><span>Özel geliştirme talepleri</span></li>
+        </ul>
+        <a href="mailto:info@saha360.com" class="price-btn price-btn-outline">Teklif İste</a>
+      </div>
+
     </div>
-    <p class="pricing-note">* Fiyatlara Dataverse ve Microsoft 365 lisans maliyetleri dahil değildir. Tek seferlik kurulum ücreti ayrıca uygulanır.</p>
+
+    <p class="pricing-note">
+      Fiyatlandırma; kullanıcı sayısı, kurulum kapsamı, destek seviyesi ve Dataverse depolama ihtiyacına göre belirlenir.<br>
+      Microsoft Dataverse ve Microsoft 365 lisans maliyetleri dahil değildir.
+    </p>
   </div>
 </section>
 
