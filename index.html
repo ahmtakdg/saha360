@@ -113,7 +113,19 @@
     }
     .section-sub { color: var(--muted); max-width: 540px; margin: 0 auto 3rem; }
 
-    /* ── iPhone mockup – Apple.com quality ── */
+    /* ── App mockup image ── */
+    .mockup-image-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 4rem;
+    }
+    .mockup-image {
+      max-width: 900px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 40px 80px rgba(0,0,0,.6));
+    }
+    /* DEAD CODE – phones/iphone kept for reference */
     .phones {
       display: flex;
       align-items: flex-end;
@@ -469,23 +481,8 @@
   <h2 class="section-title">Her Şey Bir Ekranda</h2>
   <p class="section-sub">Görevler, ziyaretler ve ekip durumu — sezgisel arayüzle anlık bilgi.</p>
 
-  <div class="phones">
-    <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen1.png" alt="Ana Ekran" /></div></div>
-      <div class="phone-label">Ana Ekran</div>
-    </div>
-    <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen2.png" alt="Görev Listesi" /></div></div>
-      <div class="phone-label">Görev Listesi</div>
-    </div>
-    <div class="phone-wrap featured">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen_yonetici.png" alt="Yönetici Paneli" /></div></div>
-      <div class="phone-label">Yönetici Paneli</div>
-    </div>
-    <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen5.png" alt="Raporlar" /></div></div>
-      <div class="phone-label">Raporlar</div>
-    </div>
+  <div class="mockup-image-wrap">
+    <img src="screenshots/phones_mockup.png" alt="Saha 360 Uygulama Ekranları" class="mockup-image" />
   </div>
 </section>
 
