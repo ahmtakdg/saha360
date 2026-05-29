@@ -116,7 +116,7 @@
     /* ── iPhone mockup ── */
     .phones {
       display: flex; align-items: flex-end; justify-content: center;
-      gap: 2rem; overflow-x: auto; padding: 2rem 1rem 3rem;
+      gap: 1.5rem; overflow-x: auto; padding: 2rem 1rem 4rem;
     }
 
     .phone-wrap {
@@ -125,31 +125,31 @@
     }
     .phone-wrap:hover { transform: translateY(-10px) rotate(-1deg); }
     .phone-wrap.featured {
-      transform: translateY(-20px) scale(1.06);
+      transform: translateY(-24px) scale(1.12);
       z-index: 2;
     }
-    .phone-wrap.featured:hover { transform: translateY(-28px) scale(1.08) rotate(-1deg); }
+    .phone-wrap.featured:hover { transform: translateY(-32px) scale(1.14) rotate(-1deg); }
 
     /* The device shell */
     .iphone {
       position: relative;
-      width: 168px;
-      height: 344px;
-      border-radius: 38px;
-      background: linear-gradient(160deg, #d0d0d8 0%, #a8a8b0 40%, #888890 100%);
+      width: 180px;
+      height: 372px;
+      border-radius: 42px;
+      background: linear-gradient(160deg, #d8d8e0 0%, #b0b0ba 40%, #909098 100%);
       padding: 3px;
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.18) inset,
-        0 32px 64px rgba(0,0,0,.75),
-        0 8px 16px rgba(0,0,0,.4),
-        4px 0 12px rgba(0,0,0,.3);
+        0 0 0 1px rgba(255,255,255,.22) inset,
+        0 40px 80px rgba(0,0,0,.8),
+        0 8px 20px rgba(0,0,0,.45),
+        5px 5px 18px rgba(0,0,0,.35);
     }
 
     /* Inner screen bezel */
     .iphone-inner {
       width: 100%; height: 100%;
-      border-radius: 36px;
-      background: #0a0a0a;
+      border-radius: 40px;
+      background: #050505;
       overflow: hidden;
       position: relative;
     }
@@ -158,39 +158,49 @@
     .iphone-inner img {
       width: 100%; height: 100%;
       object-fit: cover;
+      object-position: top center;
       display: block;
-      border-radius: 34px;
+      border-radius: 38px;
     }
 
     /* Dynamic Island */
     .iphone-inner::before {
       content: '';
-      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-      width: 72px; height: 20px;
+      position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+      width: 76px; height: 22px;
       background: #000;
       border-radius: 20px;
       z-index: 10;
     }
 
-    /* Side buttons – right (power) */
+    /* Power button – right */
     .iphone::after {
       content: '';
       position: absolute;
-      right: -4px; top: 100px;
-      width: 4px; height: 60px;
-      background: linear-gradient(180deg, #b0b0b8, #888890);
+      right: -4px; top: 108px;
+      width: 4px; height: 64px;
+      background: linear-gradient(180deg, #c0c0c8, #909098);
       border-radius: 0 3px 3px 0;
     }
 
-    /* Side buttons – left (volume up/down) via box-shadow trick */
+    /* Volume buttons – left */
     .iphone::before {
       content: '';
       position: absolute;
-      left: -4px; top: 80px;
-      width: 4px; height: 36px;
-      background: linear-gradient(180deg, #b0b0b8, #888890);
+      left: -4px; top: 86px;
+      width: 4px; height: 38px;
+      background: linear-gradient(180deg, #c0c0c8, #909098);
       border-radius: 3px 0 0 3px;
-      box-shadow: 0 50px 0 #999;
+      box-shadow: 0 52px 0 #a0a0a8;
+    }
+
+    /* Featured gets extra glow */
+    .phone-wrap.featured .iphone {
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.3) inset,
+        0 50px 100px rgba(0,0,0,.85),
+        0 0 40px rgba(0,102,255,.25),
+        5px 5px 20px rgba(0,0,0,.4);
     }
 
     /* FEATURES */
@@ -349,19 +359,16 @@
 
   <div class="phones">
     <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen1.png" alt="Görev Listesi" /></div></div>
+      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen1.png" alt="Ana Ekran" /></div></div>
     </div>
     <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen2.png" alt="Görev Detayı" /></div></div>
+      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen2.png" alt="Görev Listesi" /></div></div>
     </div>
     <div class="phone-wrap featured">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen3.png" alt="Ana Ekran" /></div></div>
+      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen_yonetici.png" alt="Yönetici Paneli" /></div></div>
     </div>
     <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen4.png" alt="Ziyaret Takibi" /></div></div>
-    </div>
-    <div class="phone-wrap">
-      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen5.png" alt="Ekip Yönetimi" /></div></div>
+      <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen5.png" alt="Raporlar" /></div></div>
     </div>
   </div>
 </section>
