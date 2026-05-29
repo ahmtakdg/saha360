@@ -113,94 +113,172 @@
     }
     .section-sub { color: var(--muted); max-width: 540px; margin: 0 auto 3rem; }
 
-    /* ── iPhone mockup ── */
+    /* ── iPhone mockup – Apple.com quality ── */
     .phones {
-      display: flex; align-items: flex-end; justify-content: center;
-      gap: 1.5rem; overflow-x: auto; padding: 2rem 1rem 4rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      padding: 4rem 2rem 8rem;
+      overflow-x: auto;
     }
 
     .phone-wrap {
       flex-shrink: 0;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+      transition: transform .4s cubic-bezier(.25,.8,.25,1), opacity .3s;
+      transform-origin: bottom center;
     }
-    .phone-wrap:hover { transform: translateY(-10px) rotate(-1deg); }
-    .phone-wrap.featured {
-      transform: translateY(-24px) scale(1.12);
-      z-index: 2;
-    }
-    .phone-wrap.featured:hover { transform: translateY(-32px) scale(1.14) rotate(-1deg); }
 
-    /* The device shell */
+    /* Side phones – smaller, slightly receded */
+    .phone-wrap:not(.featured) .iphone {
+      width: 200px;
+      height: 434px;
+      border-radius: 46px;
+    }
+    .phone-wrap:not(.featured) .iphone-inner { border-radius: 43px; }
+    .phone-wrap:not(.featured) .iphone-inner img { border-radius: 43px; }
+    .phone-wrap:not(.featured) .iphone-inner::before { width: 74px; height: 22px; top: 13px; }
+    .phone-wrap:not(.featured) {
+      opacity: .88;
+      transform: scale(.88);
+    }
+    .phone-wrap:not(.featured):hover {
+      opacity: 1;
+      transform: scale(.9) translateY(-12px);
+    }
+
+    /* Featured – center, biggest, raised */
+    .phone-wrap.featured {
+      transform: translateY(-40px);
+      z-index: 10;
+    }
+    .phone-wrap.featured:hover { transform: translateY(-50px) scale(1.02); }
+
+    /* Device shell */
     .iphone {
       position: relative;
-      width: 180px;
-      height: 372px;
-      border-radius: 42px;
-      background: linear-gradient(160deg, #d8d8e0 0%, #b0b0ba 40%, #909098 100%);
-      padding: 3px;
+      width: 240px;
+      height: 520px;
+      border-radius: 54px;
+      /* Multi-stop titanium gradient */
+      background: linear-gradient(155deg,
+        #dcdce4 0%,
+        #c4c4ce 12%,
+        #aeaeba 28%,
+        #9898a6 44%,
+        #a2a2b0 58%,
+        #b8b8c6 72%,
+        #ccccd6 86%,
+        #dcdce6 100%
+      );
+      padding: 3.5px;
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.22) inset,
-        0 40px 80px rgba(0,0,0,.8),
-        0 8px 20px rgba(0,0,0,.45),
-        5px 5px 18px rgba(0,0,0,.35);
+        inset 0 1.5px 0 rgba(255,255,255,.65),
+        inset 0 -1px 0 rgba(0,0,0,.25),
+        inset 1px 0 0 rgba(255,255,255,.25),
+        inset -1px 0 0 rgba(0,0,0,.1),
+        0 0 0 .5px rgba(0,0,0,.35),
+        0 2px 4px rgba(0,0,0,.2),
+        0 20px 50px rgba(0,0,0,.7),
+        0 60px 120px rgba(0,0,0,.9),
+        0 100px 160px rgba(0,0,0,.5);
     }
 
-    /* Inner screen bezel */
+    /* Inner screen area */
     .iphone-inner {
       width: 100%; height: 100%;
-      border-radius: 40px;
-      background: #050505;
+      border-radius: 51px;
+      background: #000;
       overflow: hidden;
       position: relative;
     }
 
-    /* Screenshot fills the screen */
+    /* Screenshot */
     .iphone-inner img {
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: top center;
       display: block;
-      border-radius: 38px;
+      border-radius: 51px;
     }
 
     /* Dynamic Island */
     .iphone-inner::before {
       content: '';
-      position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
-      width: 76px; height: 22px;
+      position: absolute;
+      top: 15px; left: 50%; transform: translateX(-50%);
+      width: 92px; height: 28px;
       background: #000;
-      border-radius: 20px;
+      border-radius: 16px;
       z-index: 10;
+    }
+
+    /* Screen glass sheen */
+    .iphone-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 51px;
+      background: linear-gradient(155deg,
+        rgba(255,255,255,.07) 0%,
+        rgba(255,255,255,.02) 30%,
+        transparent 60%
+      );
+      pointer-events: none;
+      z-index: 6;
     }
 
     /* Power button – right */
     .iphone::after {
       content: '';
       position: absolute;
-      right: -4px; top: 108px;
-      width: 4px; height: 64px;
-      background: linear-gradient(180deg, #c0c0c8, #909098);
-      border-radius: 0 3px 3px 0;
+      right: -3.5px; top: 130px;
+      width: 3.5px; height: 76px;
+      background: linear-gradient(180deg, #d0d0da 0%, #a8a8b6 50%, #c0c0cc 100%);
+      border-radius: 0 4px 4px 0;
     }
 
-    /* Volume buttons – left */
+    /* Action + Volume buttons – left */
     .iphone::before {
       content: '';
       position: absolute;
-      left: -4px; top: 86px;
-      width: 4px; height: 38px;
-      background: linear-gradient(180deg, #c0c0c8, #909098);
-      border-radius: 3px 0 0 3px;
-      box-shadow: 0 52px 0 #a0a0a8;
+      left: -3.5px; top: 96px;
+      width: 3.5px; height: 42px;
+      background: linear-gradient(180deg, #d0d0da 0%, #a8a8b6 50%, #c0c0cc 100%);
+      border-radius: 4px 0 0 4px;
+      box-shadow:
+        0 60px 0 #babac6,
+        0 110px 0 #babac6;
     }
 
-    /* Featured gets extra glow */
+    /* Featured blue glow */
     .phone-wrap.featured .iphone {
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.3) inset,
-        0 50px 100px rgba(0,0,0,.85),
-        0 0 40px rgba(0,102,255,.25),
-        5px 5px 20px rgba(0,0,0,.4);
+        inset 0 1.5px 0 rgba(255,255,255,.65),
+        inset 0 -1px 0 rgba(0,0,0,.25),
+        inset 1px 0 0 rgba(255,255,255,.25),
+        inset -1px 0 0 rgba(0,0,0,.1),
+        0 0 0 .5px rgba(0,0,0,.35),
+        0 2px 4px rgba(0,0,0,.2),
+        0 20px 50px rgba(0,0,0,.6),
+        0 60px 120px rgba(0,0,0,.85),
+        0 0 60px rgba(0,102,255,.28),
+        0 0 120px rgba(0,102,255,.14);
+    }
+
+    /* Phone caption label */
+    .phone-label {
+      text-align: center;
+      margin-top: 22px;
+      font-size: .76rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
+    .phone-wrap.featured .phone-label {
+      color: var(--text);
+      font-weight: 600;
     }
 
     /* FEATURES */
@@ -360,15 +438,19 @@
   <div class="phones">
     <div class="phone-wrap">
       <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen1.png" alt="Ana Ekran" /></div></div>
+      <div class="phone-label">Ana Ekran</div>
     </div>
     <div class="phone-wrap">
       <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen2.png" alt="Görev Listesi" /></div></div>
+      <div class="phone-label">Görev Listesi</div>
     </div>
     <div class="phone-wrap featured">
       <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen_yonetici.png" alt="Yönetici Paneli" /></div></div>
+      <div class="phone-label">Yönetici Paneli</div>
     </div>
     <div class="phone-wrap">
       <div class="iphone"><div class="iphone-inner"><img src="screenshots/screen5.png" alt="Raporlar" /></div></div>
+      <div class="phone-label">Raporlar</div>
     </div>
   </div>
 </section>
